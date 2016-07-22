@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "nodemon --exec babel-node --presets=es2015 -- ./index.js",
-    "one": "nodemon --exec babel-node --presets=es2015 -- ./one/generate.js"
+    "one": "nodemon --exec babel-node --presets=es2015 -- ./one/generate.js",
+    "babel": "babel one/generate.js --out-file ./one/generate-prod.js",
+    "one-off": "node one/generate-prod.js"
   },
   "repository": {
     "type": "git",

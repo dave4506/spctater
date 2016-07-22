@@ -1,6 +1,5 @@
 import AlchemyAPI from 'alchemy-api'
 import natural from 'natural'
-import constitution from '../constitution'
 import firebase from 'firebase'
 
 firebase.initializeApp({
@@ -160,7 +159,11 @@ const one = ()=> {
           i = parseInt(k)
       })
       console.log(i,key)
-      return generationLife(t[i],[],(i+1),key)
+      return new Promise((res,rej)=>{
+        generationLife(t[i],[],(i+1),key).then(()=>{
+          res()
+        })
+      })
     })
     return Promise.all(lookup)
   })
