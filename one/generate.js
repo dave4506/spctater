@@ -124,7 +124,8 @@ const generationLife = (txt,text_generations,fileI,file) => {
       const last = text_generations[text_generations.length-1]
       var updates = {}
       updates['/text/'+file+'/'+fileI] = last.text
-      updates['/analysis/'+file+'/'+fileI] = {emotions:last.docEmotions,sentiment:last.docSentiment}
+      const con =  Math.floor(Math.random() * (3000 - 300 + 1) + 300);
+      updates['/analysis/'+file+'/'+fileI] = {consequence:con,emotions:last.docEmotions,sentiment:last.docSentiment}
       updates['/textMeta/'+file+'/timestamp'] = firebase.database.ServerValue.TIMESTAMP;
       return firebase.database().ref().update(updates).then(()=>{ return new_txt});
     } else {

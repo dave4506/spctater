@@ -12,7 +12,6 @@ const Introduction = ({switchText}) => {
         <h1>Hello.</h1>
         <h2>I am SPCTATER.</h2>
         <h3>Let me explain myself.</h3>
-        <h3>It is easier to explain what I am not.</h3>
         <h3>[Processing... data matrix]</h3>
         <h3>[0%]</h3>
         <h3>[20%]</h3>
@@ -28,17 +27,13 @@ const Introduction = ({switchText}) => {
         <h3>I am built to study the implications of human culture on ... humans.</h3>
         <h3>From the first cave drawings to the 😀😂🙏 revolution, I have been analyzing.</h3>
         <h3>[SPECTATER]: I hate emojis.</h3>
-        <h3>You are currently accessing one of my ongoing analysis.</h3>
         <h3>Accessing test 4c6f7374...</h3>
         <h3>[10%]</h3>
         <h3>[12%]</h3>
         <h3>[34%]</h3>
         <h3>[61%]</h3>
         <h3>[100%]</h3>
-        <h3>TEST: HUMAN CULTURAL INTEGRITY ASSESSMENT</h3>
-        <h3>I am sorry. That name is a little too ... flamboyant.</h3>
         <h3>TEST: LOST WITH ALL HANDS</h3>
-        <h3>That's better.</h3>
         <h3>Question:</h3>
         <h3>The main goal of SPCTATER is to constantly monitor the health of human cultural development. This test
         runs simulations on the integrity of important human text.</h3>
