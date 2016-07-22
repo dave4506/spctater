@@ -58,8 +58,10 @@ class View extends Component {
           <div className="header">
             <h1>World: {texts.length} generations (revisions).</h1>
           </div>
-          {texts.reverse().map((t,i)=>{
-            return <Block key={i} {...Object.assign({i:(texts.length - i),text:t},analytics[i])}/>
+          {Object.keys(texts).reverse().map((i)=>{
+            console.log(i,analytics[i])
+            const t = texts[i]
+            return <Block key={i} {...Object.assign({i:(i),text:t},analytics[i])}/>
           })}
       </div>
     )

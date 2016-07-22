@@ -14,7 +14,7 @@ const wordnet = new natural.WordNet();
 const nounInflector = new natural.NounInflector();
 const alchemy = new AlchemyAPI(back_up);
 
-const generations = 1;
+const generations = 2;
 const textDataExtract = ["doc-emotion","doc-sentiment","keyword","concept"];
 const responseDataKeys = ["docSentiment","keywords","concepts","docEmotions"];
 
@@ -120,12 +120,16 @@ const generationLife = (txt,text_generations,fileI,file) => {
     })
     return new_txt
   }).then((new_txt)=>{
-    const last = text_generations[text_generations.length-1]
-    var updates = {}
-    updates['/text/'+file+'/'+fileI] = last.text
-    updates['/analysis/'+file+'/'+fileI] = {emotions:last.docEmotions,sentiment:last.docSentiment}
-    updates['/textMeta/'+file+'/timestamp'] = firebase.database.ServerValue.TIMESTAMP;
-    return firebase.database().ref().update(updates).then(()=>{ return new_txt});
+    if(text_generations.length != 1) {
+      const last = text_generations[text_generations.length-1]
+      var updates = {}
+      updates['/text/'+file+'/'+fileI] = last.text
+      updates['/analysis/'+file+'/'+fileI] = {emotions:last.docEmotions,sentiment:last.docSentiment}
+      updates['/textMeta/'+file+'/timestamp'] = firebase.database.ServerValue.TIMESTAMP;
+      return firebase.database().ref().update(updates).then(()=>{ return new_txt});
+    } else {
+      return new_txt
+    }
   })
   .then((new_txt)=>{
     if(text_generations.length < generations)

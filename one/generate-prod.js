@@ -26,7 +26,7 @@ var wordnet = new _natural2.default.WordNet();
 var nounInflector = new _natural2.default.NounInflector();
 var alchemy = new _alchemyApi2.default(back_up);
 
-var generations = 1;
+var generations = 2;
 var textDataExtract = ["doc-emotion", "doc-sentiment", "keyword", "concept"];
 var responseDataKeys = ["docSentiment", "keywords", "concepts", "docEmotions"];
 
@@ -139,14 +139,18 @@ var generationLife = function generationLife(txt, text_generations, fileI, file)
     });
     return new_txt;
   }).then(function (new_txt) {
-    var last = text_generations[text_generations.length - 1];
-    var updates = {};
-    updates['/text/' + file + '/' + fileI] = last.text;
-    updates['/analysis/' + file + '/' + fileI] = { emotions: last.docEmotions, sentiment: last.docSentiment };
-    updates['/textMeta/' + file + '/timestamp'] = _firebase2.default.database.ServerValue.TIMESTAMP;
-    return _firebase2.default.database().ref().update(updates).then(function () {
+    if (text_generations.length != 1) {
+      var last = text_generations[text_generations.length - 1];
+      var updates = {};
+      updates['/text/' + file + '/' + fileI] = last.text;
+      updates['/analysis/' + file + '/' + fileI] = { emotions: last.docEmotions, sentiment: last.docSentiment };
+      updates['/textMeta/' + file + '/timestamp'] = _firebase2.default.database.ServerValue.TIMESTAMP;
+      return _firebase2.default.database().ref().update(updates).then(function () {
+        return new_txt;
+      });
+    } else {
       return new_txt;
-    });
+    }
   }).then(function (new_txt) {
     if (text_generations.length < generations) return generationLife(new_txt, text_generations, fileI, file);else return text_generations;
   });
