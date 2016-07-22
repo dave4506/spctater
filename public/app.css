@@ -1,0 +1,123 @@
+body {
+  font-family: 'Inconsolata', monospace;
+  background-color: #041122;
+  color:white;
+}
+
+.home-wrapper h3 {
+  position: absolute;
+  top:0;
+  right:0;
+  left:0;
+  text-align: center;
+  margin-top: 30px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.text-block {
+  width: 90vw;
+  /*
+  display: table;
+  */
+  margin: auto;
+  margin-top: 5vh;
+  text-align: left;
+}
+
+.center-block {
+  width: 90vw;
+  display: table;
+  margin: auto;
+  text-align: left;
+}
+
+.header {
+  width: 90vw;
+  margin: auto;
+  padding-top: 100px;
+}
+
+.center-block .text {
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.center-block h4 {
+  margin: 0.2em 0;
+}
+
+
+.text-block .typing {
+  animation: blink 1s infinite;
+  padding-bottom: 100px;
+}
+
+#generation {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.low {
+  opacity: 0.6;
+}
+
+.arrow {
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+
+.cat {
+  transition: opacity 300ms ease-in-out;
+}
+
+.cat-title {
+  transform: translateX(0px);
+  transition: transform 300ms ease-in-out;
+}
+
+.cat-title:hover {
+  transform: translateX(10px);
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+@keyframes blink{
+  to{opacity: .0;}
+}
+
+.done-btn {
+  text-align: right;
+}
+
+.done {
+  transition: padding 300ms ease-in-out;
+}
+
+.done-btn {
+  cursor: pointer;
+}
+
+.done-btn:hover .done {
+  padding: 0 10px;
+}
+
+.navbar {
+  height:80px;
+  position: fixed;
+  top:0;
+  right:0;
+  left:0;
+}
+
+.navbar #title {
+  text-align: center;
+}
+
+.navbar #back {
+  float: left;
+  padding-left: 30px;
+}
