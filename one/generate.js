@@ -150,22 +150,22 @@ const one = ()=> {
     return Promise.all(lookup);
   }).then((texts)=>{
     var obj = {}
-    var lookup = [];
-    lookup.concat(texts).map((t)=>{
+    var lookup = [].concat(texts).map((t)=>{
       var key = t.textKey
       var i = -1;
       Object.keys(t).map((k)=>{
         if(k != 'textKey')
           i = parseInt(k)
       })
-      console.log(i,key)
       return new Promise((res,rej)=>{
         generationLife(t[i],[],(i+1),key).then(()=>{
-          res()
+          res("done")
         })
       })
     })
     return Promise.all(lookup)
+  }).then((arr)=>{
+    process.exit()
   })
 }
 

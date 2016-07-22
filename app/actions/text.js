@@ -45,9 +45,9 @@ const fetchTextStatus = (status,text,analytics) => {
 export const fetchText = (category) => {
   return (dispatch) => {
     dispatch(fetchTextStatus("REQUEST"))
-    firebase.database().ref('text').child(category).once('value').then((snapshot)=>{
+    firebase.database().ref('text').child(category).limitToLast(20).once('value').then((snapshot)=>{
       const texts = snapshot.val();
-      firebase.database().ref('analysis').child(category).once('value').then((snapshot2)=>{
+      firebase.database().ref('analysis').child(category).limitToLast(20).once('value').then((snapshot2)=>{
         const a = snapshot2.val();
         dispatch(fetchTextStatus("RECIEVED",texts,a));
       })

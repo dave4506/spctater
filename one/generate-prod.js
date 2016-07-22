@@ -167,21 +167,21 @@ var one = function one() {
     return Promise.all(lookup);
   }).then(function (texts) {
     var obj = {};
-    var lookup = [];
-    lookup.concat(texts).map(function (t) {
+    var lookup = [].concat(texts).map(function (t) {
       var key = t.textKey;
       var i = -1;
       Object.keys(t).map(function (k) {
         if (k != 'textKey') i = parseInt(k);
       });
-      console.log(i, key);
       return new Promise(function (res, rej) {
         generationLife(t[i], [], i + 1, key).then(function () {
-          res();
+          res("done");
         });
       });
     });
     return Promise.all(lookup);
+  }).then(function (arr) {
+    process.exit();
   });
 };
 
