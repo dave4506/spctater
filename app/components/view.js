@@ -53,7 +53,10 @@ class View extends Component {
   }
 
   render() {
-    const {switchText,selected,texts,analytics} = this.props
+    const {switchText,selected,texts,analytics,cat} = this.props
+    const selectedDetails = cat[selected]
+    const nextGenerationTime = selectedDetails.timestamp+60*60*1000;
+    const difference = Math.floor((nextGenerationTime - Date.now())/60000)
     if(!texts) {
       return (
       <div>
@@ -66,9 +69,10 @@ class View extends Component {
     }
     return (
       <div>
-        <Navbar switchText={switchText} textCat={selected}/>
+        <Navbar switchText={switchText} textCat={selectedDetails.public}/>
           <div className="header">
             <h1>World: {Object.keys(texts).reverse()[0]} generations (revisions).</h1>
+            <h3>Next generation in {difference} minutes.</h3>
           </div>
           {Object.keys(texts).reverse().map((i)=>{
             const t = texts[i]

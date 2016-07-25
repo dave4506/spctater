@@ -11,12 +11,13 @@ import End from '../components/end.js'
 import View from '../components/view.js'
 
 import {fetchCategory,selectedCategory,fetchText} from '../actions/text'
+import {type_message,monitor_text} from '../actions/chat';
 
 class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
-      textState:"view"
+      textState:"loading"
     }
   }
 
@@ -29,7 +30,7 @@ class Home extends Component {
   }
 
   render() {
-    const {cat,selectedCategory,fetchText,selected,texts,analytics} = this.props
+    const {messages,monitor_text,sendMessage,cat,selectedCategory,fetchText,selected,texts,analytics} = this.props
     delete cat["status"]
     const {textState} = this.state;
     const switchText = (textState)=>{this.setState({textState})}
@@ -41,11 +42,11 @@ class Home extends Component {
       case "simStart":
         return (<SimStart cat={cat} selectedCategory={selectedCategory} switchText={switchText}/>)
       case "view":
-        return (<View texts={texts} analytics={analytics} selected={selected} fetchText={fetchText} switchText={switchText}/>)
+        return (<View cat={cat} texts={texts} analytics={analytics} selected={selected} fetchText={fetchText} switchText={switchText}/>)
       case "backCat":
         return (<SimBack cat={cat} selectedCategory={selectedCategory} switchText={switchText}/>)
       case "end":
-        return (<End switchText={switchText}/>)
+        return (<End messages={messages} monitor_text={monitor_text} sendMessage={sendMessage} switchText={switchText} />)
       default:
         return (<div></div>)
     }
@@ -57,12 +58,19 @@ const mapStateToProps = (state, ownProps) => {
     cat: state.cat || {},
     texts: state.text.texts,
     selected: state.text.selected,
-    analytics: state.text.analytics
+    analytics: state.text.analytics,
+    messages: state.chat.messages
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    sendMessage: (message)=>{
+      dispatch(type_message(message))
+    },
+    monitor_text: ()=>{
+      dispatch(monitor_text())
+    },
     fetchCategory: ()=>{
       dispatch(fetchCategory())
     },
