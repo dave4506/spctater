@@ -19,7 +19,7 @@ class End extends Component {
     const {messages,switchText,cat,monitor_text,sendMessage} = this.props
     return (
       <div className="text-block">
-        <TypeWriter typing={1} onTypingEnd={()=>{setTimeout(()=>{this.setState({status:'chat-pre'})},60*30*1)}}>
+        <TypeWriter typing={1} onTypingEnd={()=>{setTimeout(()=>{this.setState({status:'chat-pre'})},30*1000)}}>
           <h3>[SPCTATER]: Do you see it?</h3>
           <h3>[SPCTATER]: To me all the documents are just numbers, 0 and 1.</h3>
           <h3>Assessment: Human text integrity is highly susceptible to integral changes due to perversion. Even with the improbable change of real world text as simulated, precautionary steps should be taken.</h3>
@@ -60,6 +60,7 @@ class End extends Component {
               <audio src="https://firebasestorage.googleapis.com/v0/b/contentgen-8876e.appspot.com/o/public%2Faudio.wav?alt=media&token=4275b43c-7b44-4e38-bd67-c1e74620b2b0" autoPlay>
               </audio>
               <TypeWriter typing={1} onTypingEnd={()=>{this.setState({status:"chat"})}}>
+                <h3>[Audio interface activated]</h3>
                 <h3>Rebooting...</h3>
                 <h3>[0%]</h3>
                 <h3>[23%]</h3>

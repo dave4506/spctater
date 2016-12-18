@@ -1,0 +1,25 @@
+{
+  "name": "content_gen_one_off",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dave4506/content_one.git"
+  },
+  "author": "David Sun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dave4506/content_one/issues"
+  },
+  "homepage": "https://github.com/dave4506/content_one#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
